@@ -35,7 +35,8 @@ public class ObjectColumnDefinition extends TextColumnDefinition {
       
       while (iter.hasNext())
       {
-         String key = (String)iter.next();
+         Map.Entry entry = (Map.Entry)iter.next();
+         String key = (String) entry.getKey();
          String value = classNameToType.get(key);
          
          typeToClassName.put(value, key);

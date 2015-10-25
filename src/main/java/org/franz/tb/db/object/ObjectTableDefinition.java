@@ -52,6 +52,7 @@ public class ObjectTableDefinition extends TextTableDefinition {
 
    static class StringConvert implements ConvertFromToString {
 
+      @Override
       public Object convertFrom(String str) {
          return str;
       }
@@ -66,6 +67,7 @@ public class ObjectTableDefinition extends TextTableDefinition {
 
    static class DateConvert implements ConvertFromToString {
 
+      @Override
       public Object convertFrom(String str) {
          try {
             return dateFormat.parse(str);
@@ -85,6 +87,7 @@ public class ObjectTableDefinition extends TextTableDefinition {
 
    static class BooleanConvert implements ConvertFromToString {
 
+      @Override
       public Object convertFrom(String str) {
          try {
             return Boolean.valueOf(str);
@@ -104,6 +107,7 @@ public class ObjectTableDefinition extends TextTableDefinition {
 
    static class LongConvert implements ConvertFromToString {
 
+      @Override
       public Object convertFrom(String str) {
          try {
             return Long.valueOf(str);
@@ -123,6 +127,7 @@ public class ObjectTableDefinition extends TextTableDefinition {
 
    static class IntegerConvert implements ConvertFromToString {
 
+      @Override
       public Object convertFrom(String str) {
          try {
             return Integer.valueOf(str);
@@ -142,6 +147,7 @@ public class ObjectTableDefinition extends TextTableDefinition {
 
    static class DoubleConvert implements ConvertFromToString {
 
+      @Override
       public Object convertFrom(String str) {
          try {
             return Double.valueOf(str);
