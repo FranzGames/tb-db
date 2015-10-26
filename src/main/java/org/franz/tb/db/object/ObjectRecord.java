@@ -59,13 +59,18 @@ public class ObjectRecord extends TextRecord {
          throw new IllegalArgumentException("Column " + column + " is not part of the data");
       }
 
+      return this.getValue (colNo);
+   }
+   
+   @Override
+   public Object getValue(int colNo) {
       if (this.getColumnData(colNo) == null) {
-         return getDefinition().getDefaultValue(column);
+         return getDefinition().getDefaultValue(colNo);
       }
 
-      return getDefinition().convertFromString(column, this.getColumnData(colNo));
+      return getDefinition().convertFromString(colNo, this.getColumnData(colNo));
    }
-
+   
    public int getInteger(String column) {
       return ((Integer) getValue(column)).intValue();
    }

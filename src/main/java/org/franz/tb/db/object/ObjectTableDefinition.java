@@ -164,15 +164,13 @@ public class ObjectTableDefinition extends TextTableDefinition {
          return obj.toString();
       }
    }
-   
-   public String convertToString (String columnName, Object value)
+
+   public String convertToString (int columnNo, Object value)
       {
-      int index = this.getColumnNo(columnName);
-      
-      if (index < 0)
+      if (columnNo < 0)
          return null;
       
-      ObjectColumnDefinition colDef = (ObjectColumnDefinition) getColumnDefinition (index);
+      ObjectColumnDefinition colDef = (ObjectColumnDefinition) getColumnDefinition (columnNo);
       
       ConvertFromToString convertor = (ConvertFromToString) stringConvertMap.get(colDef.getClassType());
 
@@ -182,15 +180,17 @@ public class ObjectTableDefinition extends TextTableDefinition {
       return null;
       }
    
-   
-   public Object convertFromString (String columnName, String value)
+   public String convertToString (String columnName, Object value)
       {
-      int index = this.getColumnNo(columnName);
-      
-      if (index < 0)
+      return convertToString (this.getColumnNo(columnName), value);
+      }
+   
+   public Object convertFromString (int columnNo, String value)
+      {
+      if (columnNo < 0)
          return null;
       
-      ObjectColumnDefinition colDef = (ObjectColumnDefinition) getColumnDefinition (index);
+      ObjectColumnDefinition colDef = (ObjectColumnDefinition) getColumnDefinition (columnNo);
       
       ConvertFromToString convertor = (ConvertFromToString) stringConvertMap.get(colDef.getClassType());
 
@@ -200,16 +200,24 @@ public class ObjectTableDefinition extends TextTableDefinition {
       return null;
       }
    
-   public final Object getDefaultValue(String columnName)
+   public Object convertFromString (String columnName, String value)
       {
-      int index = this.getColumnNo(columnName);
-      
-      if (index < 0)
+      return convertFromString(this.getColumnNo(columnName), value);
+      }
+
+   public final Object getDefaultValue(int columnNo)
+      {
+      if (columnNo < 0)
          return null;
       
-      ObjectColumnDefinition colDef = (ObjectColumnDefinition) getColumnDefinition (index);
+      ObjectColumnDefinition colDef = (ObjectColumnDefinition) getColumnDefinition (columnNo);
       
       return defaultMap.get(colDef.getClassType());
+      }
+   
+   public final Object getDefaultValue(String columnName)
+      {
+      return getDefaultValue(this.getColumnNo(columnName));
       }
 
    @Override

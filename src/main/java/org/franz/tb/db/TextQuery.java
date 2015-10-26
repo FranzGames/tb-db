@@ -44,7 +44,7 @@ public class TextQuery {
 
       for (Criteria crit : criterias) {
          int colNo = table.getColumnNo(crit.getColumnName());
-         String value = rec.getColumnData(colNo);
+         Object value = rec.getValue(colNo);
 
          boolean critResult = crit.match(value);
 

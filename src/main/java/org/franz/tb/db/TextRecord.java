@@ -119,6 +119,11 @@ public class TextRecord {
       return this.getData().get(colNo);
    }
    
+   public Object getValue (int colNo)
+   {
+      return this.getColumnData(colNo);
+   }
+   
    /**
     * @return the data
     */
