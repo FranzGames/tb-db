@@ -18,11 +18,11 @@ public class TestTextUtil {
    @Test
    public void testParseCsv()
    {
-      List<String> data = TextUtil.parseCsv("col1,col2,col3\\nline2");
+      List<String> data = TextUtil.parseCsv("\"col1\",\\\"col2,col3\\nline2");
       
       assertEquals(data.size(), 3);
       assertEquals(data.get(0), "col1");
-      assertEquals(data.get(1), "col2");
+      assertEquals(data.get(1), "\"col2");
       assertEquals(data.get(2), "col3\nline2");
       
       data = TextUtil.parseCsv("");
@@ -47,5 +47,10 @@ public class TestTextUtil {
       str = TextUtil.encodeString("test\\t test");
       
       assertEquals (str, "test\\\\t test");
+      
+      str = TextUtil.encodeString("test\" test");
+      
+      assertEquals (str, "test\\\" test");
+      
    }
 }

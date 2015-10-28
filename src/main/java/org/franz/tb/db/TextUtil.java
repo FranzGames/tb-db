@@ -30,11 +30,11 @@ public class TextUtil {
       for (int i = 0; i < csvLine.length(); i++) {
          char ch = csvLine.charAt(i);
 
-         if (ch == '"' && builder.length() == 0) {
-            isQuoted = true;
-            continue;
-         } else if (state == ESCAPE_STATE) {
+         if (state == ESCAPE_STATE) {
             switch (ch) {
+               case '"':
+                  builder.append('"');
+                  break;
                case 'r':
                   builder.append('\r');
                   break;
@@ -50,6 +50,9 @@ public class TextUtil {
             }
 
             state = NORMAL_STATE;
+         } else if (ch == '"' && builder.length() == 0) {
+            isQuoted = true;
+            continue;
          } else if (ch == '\\') {
             state = ESCAPE_STATE;
          } else if (ch == '"' && isQuoted) {
@@ -66,7 +69,7 @@ public class TextUtil {
             builder.append(ch);
          }
       }
-      
+
       data.add(builder.toString());
 
       return data;
@@ -74,12 +77,12 @@ public class TextUtil {
 
    public static String encodeCsv(List<String> data) {
       StringBuilder builder = new StringBuilder();
-      
-      for (int i = 0; i < data.size(); i++)
-      {
-         if (i != 0)
+
+      for (int i = 0; i < data.size(); i++) {
+         if (i != 0) {
             builder.append(',');
-         
+         }
+
          builder.append(encodeString(data.get(i)));
       }
 
@@ -96,9 +99,11 @@ public class TextUtil {
 
       for (int i = 0; i < str.length(); i++) {
          char ch = str.charAt(i);
-         
-         switch (ch)
-         {
+
+         switch (ch) {
+            case '"':
+               builder.append("\\\"");
+               break;
             case '\n':
                builder.append("\\n");
                break;
