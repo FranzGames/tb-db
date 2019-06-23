@@ -41,4 +41,4 @@
 
 ### What kind of license? ###
 
-* Haven't decided but leaning towards BSD or Apache.
+* Apache 2.0 License.
