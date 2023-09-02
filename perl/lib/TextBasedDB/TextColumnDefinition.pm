@@ -13,12 +13,33 @@ sub new {
 
    my $self = {
       _name => shift,
+      _type => '',
+      _isKey => 0,
    };
 
    bless $self, $class;
 
    return $self;
 }
+
+sub getType
+   {
+   my ($self) = @_;
+
+   return $self->{_type};
+   }
+ 
+sub setType
+   {
+   my ($self, $type) = @_;
+
+   $self->{_isKey} = 1 if ($type =~ m/\*/);
+   $type =~ s/\*//g;
+
+   $self->{_type} = $type if defined ($type);
+
+   return $self->{_type};
+   }
 
 sub getName
    {
@@ -39,8 +60,10 @@ sub setName
 sub processLine
    {
    my ($self, $line) = @_;
+   my @parts = split (/=/, $line);
 
-   $self->setName ($line);
+   $self->setName ($parts[0]);
+   $self->setType ($parts[1]);
    }
 
 sub createLine
