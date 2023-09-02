@@ -11,11 +11,6 @@ $VERSION="1.00";
 @EXPORT = qw(
    openDatabase
    createDatabase
-   getDatabaseDirectory
-   listOfTables
-   getTableFile
-   openTable
-   createTable
    );
 
 

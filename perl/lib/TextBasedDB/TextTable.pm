@@ -11,27 +11,6 @@ require Exporter;
 @ISA = qw(Exporter);
 $VERSION="1.00";
 @EXPORT = qw(
-   new
-   openTable
-   createTable
-   deleteTable
-   getRecordsDirectory
-   getIndexesDirectory
-   getDefinitionFile
-   getRecordFile
-   setupTable
-   createTableDefinitionObject
-   loadDefinition
-   writeDefinition
-   setTableDefinition
-   getTableDefinition
-   getColumnNo
-   getColumnName
-   findRecord
-   findRecords
-   listOfRecordIds
-   getIndex
-   createIndex
    );
 
 sub openTable {

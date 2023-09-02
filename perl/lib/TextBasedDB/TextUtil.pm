@@ -6,9 +6,6 @@ require Exporter;
 @ISA = qw(Exporter);
 $VERSION="1.00";
 @EXPORT = qw(
-   parseCsv
-   encodeCsv
-   encodeString
    );
 
 sub parseCsv

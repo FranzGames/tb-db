@@ -9,16 +9,6 @@ require Exporter;
 @ISA = qw(Exporter);
 $VERSION="1.00";
 @EXPORT = qw(
-   getRecordIdFromFile
-   new
-   getRecordFile
-   getRecordId
-   read
-   write
-   setColumnData
-   getColumnData
-   setData
-   getData
    );
 
 sub getRecordIdFromFile

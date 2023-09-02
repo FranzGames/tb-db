@@ -6,11 +6,6 @@ require Exporter;
 @ISA = qw(Exporter);
 $VERSION="1.00";
 @EXPORT = qw(
-   new
-   getName
-   setName
-   processLine
-   createLine
    );
 
 sub new {

@@ -6,13 +6,6 @@ require Exporter;
 @ISA = qw(Exporter);
 $VERSION="1.00";
 @EXPORT = qw(
-   new
-   addCriteria
-   getCriteria
-   setCriteria
-   isMatchAll
-   setMatchAll
-   match
    );
 
 sub new {

@@ -6,13 +6,6 @@ require Exporter;
 @ISA = qw(Exporter);
 $VERSION="1.00";
 @EXPORT = qw(
-   new
-   getKeyValues
-   setKeyValues
-   getRecordId
-   setRecordId
-   processLine
-   getLine
    );
 
 sub new {
