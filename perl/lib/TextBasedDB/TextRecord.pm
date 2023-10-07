@@ -32,6 +32,35 @@ sub new {
    return $self;
 }
 
+sub getCurrentDate {
+   my ($self) = @_;
+   my ($sec,$min,$hour,$mday,$mon,$year,$wday,$yday,$isdst) = localtime(time);
+
+   return sprintf("%4d-%02d-%02d %02d:%02d:%02d", ($year + 1900),($mon + 1),$mday, $hour, $min, $sec);
+}
+
+sub setTableDefinition
+   {
+   my ($self, $def) = @_;
+
+   $self->{_definition} = $def  if defined ($def);
+   }
+
+sub getTableDefinition
+   {
+   my ($self) = @_;
+
+   return $self->{_definition};
+   }
+
+sub getColumnNo
+   {
+   my ($self, $name) = @_;
+
+   return $self->getTableDefinition()->getColumnNo($name);
+   }
+	    
+ 
 sub getRecordFile
    {
    my ($self) = @_;
@@ -120,6 +149,20 @@ sub write
    close ($fh);
    }
 
+sub setColumn
+   {
+   my ($self, $name, $data) = @_;
+   
+   $self->setColumnData ($self->getColumnNo ($name), $data);
+   }
+
+sub getColumn
+   {
+   my ($self, $name) = @_;
+
+   return $self->getColumnData ($self->getColumnNo ($name));
+   }
+
 sub setColumnData
    {
    my ($self, $colNo, $data) = @_;
@@ -136,7 +179,7 @@ sub setColumnData
 
 sub getColumnData
    {
-   my ($self, $colNo, $data) = @_;
+   my ($self, $colNo) = @_;
 
    if ($colNo < 0 || $colNo >= scalar ($self->getData()))
       {

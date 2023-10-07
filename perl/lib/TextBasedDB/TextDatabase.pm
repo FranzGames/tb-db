@@ -82,6 +82,7 @@ sub getTableFile
 
 sub openTable {
    my ($self, $table) = @_;
+   my $file = $self->getTableFile ($table);
 
    return TextBasedDB::TextTable::openTable ($self->getTableFile ($table));
 }

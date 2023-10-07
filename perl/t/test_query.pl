@@ -20,5 +20,10 @@ if (!defined $rec)
 else
    {
    print "Record id = ".$rec->getRecordId()."\n";
+
+   print "Column 'email' : ".$rec->getColumn ("email")."\n";
+
+   $rec->setColumnData (1, "test@test.com");
+   $rec->write()
    }
 

@@ -233,7 +233,11 @@ sub createRecordObject
    {
    my ($self, $file) = @_;
 
-   return new TextBasedDB::TextRecord ($file);
+   my $rec = new TextBasedDB::TextRecord ($file);
+
+   $rec->setTableDefinition ($self->getTableDefinition());
+
+   return $rec;
    }
 
 sub createRecord
