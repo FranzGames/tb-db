@@ -110,7 +110,7 @@ sub generateRecordId
    {
    my ($self) = @_;
 
-   my $str = time."-".rand();
+   my $str = time."-".int(rand(963899430712333568));
 
    return $str;
    }
